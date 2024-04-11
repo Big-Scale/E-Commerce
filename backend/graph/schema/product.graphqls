@@ -1,0 +1,52 @@
+type Product {
+  id: ID!
+  name: String!
+  sku: String!
+  price: Float!
+  description: String
+  categoryId: ID
+  category: Category!
+  created_at: Time!
+  updated_at: Time!
+}
+
+input CreateProductInput {
+  name: String!
+  sku: String!
+  categoryId: ID!
+  price: Float!
+  description: String
+}
+
+input UpdateProductInput {
+  id: ID!
+  name: String!
+  sku: String!
+  categoryId: ID!
+  price: Float!
+  description: String
+}
+
+input ListProductsInput {
+  name: String!
+  price: Float!
+  sort: SortDirection
+}
+
+enum SortDirection {
+  ASC
+  DESC
+}
+
+extend type Query {
+  product(id: ID!): Product
+  products: [Product!]
+  searchProducts(name: String!): [Product!]
+  productsByCategory(categoryId: ID!): [Product!]
+}
+
+extend type Mutation {
+  createProduct(input: CreateProductInput!): Product
+  updateProduct(input: UpdateProductInput!): Product
+  deleteProduct(id: ID!): Boolean!
+}

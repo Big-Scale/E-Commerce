@@ -1,0 +1,25 @@
+"""
+Root query type representing all entry points into the API.
+"""
+type Query
+
+"""
+Root mutation type representing all entry points for modifying data in the API.
+"""
+type Mutation
+
+
+"""
+Entry point of the API, defining available operations and return types.
+"""
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+"""
+Scalar type representing a point in time.
+"""
+scalar Time
+
+scalar Upload

@@ -1,0 +1,42 @@
+{
+  "name": "base-ui-cra-ts",
+  "version": "5.0.0",
+  "private": true,
+  "dependencies": {
+    "@apollo/client": "^3.9.10",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/base": "next",
+    "@mui/icons-material": "^5.15.15",
+    "@mui/material": "^5.15.15",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "graphql": "^16.8.1",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-material-ui-carousel": "^3.4.2",
+    "react-scripts": "latest",
+    "typescript": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "latest"
+  }
+}
