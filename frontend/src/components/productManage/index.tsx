@@ -52,6 +52,12 @@ const products = [
     price: "price4",
     description: " descriptioin4",
   },
+  {
+    name: "product5",
+    SKU: "1233523452345",
+    price: "500$",
+    description: " Apple",
+  },
 ];
 export default function ProductManagementCpn() {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -67,7 +73,7 @@ export default function ProductManagementCpn() {
     loading: productsLoading,
     error: productsError,
   } = useQuery(GET_PRODUCTS_QUERY);
-  
+
   if (categoriesLoading || productsLoading) return <p>Loading...</p>;
   if (categoriesError)
     return <p>Error loading categories: {categoriesError.message}</p>;
@@ -80,22 +86,34 @@ export default function ProductManagementCpn() {
       <Grid container spacing={2}>
         <Grid xs={2}>
           <LeftProductCategoryCpn
-            setActiveCategory = {setActiveCategory}
+            setActiveCategory={setActiveCategory}
             categories={[...categoriesData.categories]}
             openDrawer={setOpenDrawer}
           />
         </Grid>
         <Grid xs={10}>
-          <MainCpn categories={categoriesData.categories} products={productsData.products.filter((aProduct:any) => {
-            let categoryMatch = false
-            if(activeCategory === 0) {
+          <MainCpn
+            categories={categoriesData.categories}
+            products={productsData.products.filter((aProduct: any) => {
+              let categoryMatch = false;
+              if (activeCategory === 0) {
                 categoryMatch = true;
-            }else{
+              } else {
                 categoryMatch = aProduct.categoryId === activeCategory;
-            }
-            const contentMatch = searchTerm === '' ? true : aProduct.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1 || aProduct.description.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
-            return categoryMatch && contentMatch;
-          })} setSearchTerm={setSearchTerm}/>
+              }
+              const contentMatch =
+                searchTerm === ""
+                  ? true
+                  : aProduct.name
+                      .toLowerCase()
+                      .indexOf(searchTerm.toLowerCase()) !== -1 ||
+                    aProduct.description
+                      .toLowerCase()
+                      .indexOf(searchTerm.toLowerCase()) !== -1;
+              return categoryMatch && contentMatch;
+            })}
+            setSearchTerm={setSearchTerm}
+          />
         </Grid>
       </Grid>
       <ProductDrawerCpn
